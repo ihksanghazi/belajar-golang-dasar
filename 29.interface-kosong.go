@@ -2,17 +2,17 @@ package main
 
 import "fmt"
 
-// Menentukan interface kosong bernama Any
-type Any interface{}
+func ups(i int) interface{} {
+	if i == 1 {
+		return 1
+	} else if i == 2 {
+		return true
+	} else {
+		return "ups"
+	}
+}
 
 func main() {
-	// Menyimpan tipe data apapun di dalam interface kosong
-	var a Any = 10
-	fmt.Println(a) // Output: 10
-
-	a = "hello"
-	fmt.Println(a) // Output: hello
-
-	a = true
-	fmt.Println(a) // Output: true
+	var test interface{} = ups(1)
+	fmt.Println(test)
 }

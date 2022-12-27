@@ -1,17 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
+
+func pembagian(nilai int, pembagi int) (int, error) {
+	if pembagi == 0 {
+		return 0, errors.New("Pembagian Tidak Boleh Nol")
+	} else {
+		return nilai / pembagi, nil
+	}
+}
 
 func main() {
+	// var contohError error = errors.New("ups Error")
 
-	var myInterface interface{}
-	fmt.Println(myInterface.SomeMethod()) // akan menyebabkan error "Nil pointer dereference"
-
-	var myInterface1 interface{}
-	var str string = myInterface1.(string) // akan menyebabkan error "Type assertion error"
-	fmt.Println(str)
-
-	var myInterface2 interface{} = 123
-	var str2 string = myInterface2.(string) // akan menyebabkan error "Invalid type assertion"
-	fmt.Println(str2)
+	hasil, err := pembagian(10, 0)
+	if err == nil {
+		fmt.Println("Hasil = ", hasil)
+	} else {
+		fmt.Println("Error = ", err.Error())
+	}
 }

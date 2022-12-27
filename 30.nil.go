@@ -2,17 +2,24 @@ package main
 
 import "fmt"
 
+func NewMap(name string) map[string]string {
+	if name == "" {
+		return nil
+	} else {
+		return map[string]string{
+			"name": name,
+		}
+	}
+
+}
+
 func main() {
-	// Membuat variabel bertipe pointer dengan nilai awal nil
-	var p *int
-	fmt.Println(p) // mencetak nil
 
-	// Menugaskan nilai ke variabel p
-	n := 10
-	p = &n
-	fmt.Println(p) // mencetak alamat memori dari variabel n
+	var person map[string]string = NewMap("sandy")
 
-	// Menugaskan nil ke variabel p
-	p = nil
-	fmt.Println(p) // mencetak nil
+	if person == nil {
+		fmt.Println("Data Kosong")
+	} else {
+		fmt.Println(person)
+	}
 }

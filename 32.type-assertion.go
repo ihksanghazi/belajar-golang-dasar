@@ -2,16 +2,27 @@ package main
 
 import "fmt"
 
+func random() interface{} {
+	return "OK"
+}
+
 func main() {
-	var myInterface interface{} = 123
+	result := random()
+	// resultString := result.(string)
+	// fmt.Println(resultString)
 
-	// Type assertion dengan syntax "x.(T)"
-	var i int = myInterface.(int)
-	fmt.Println(i) // Output: 123
+	// resultInt := result.(int) // panic
+	// fmt.Println(resultInt)
 
-	// Type assertion dengan syntax "x.(T), ok"
-	var f float64
-	var ok bool
-	f, ok = myInterface.(float64)
-	fmt.Println(f, ok) // Output: 0 false
+	switch value := result.(type) {
+	case string:
+		fmt.Println("Value ", value, " is String")
+	case bool:
+		fmt.Println("Value ", value, " is Boolean")
+	case int:
+		fmt.Println("Value ", value, " is Integer")
+	default:
+		fmt.Println("Uknown !!!")
+	}
+
 }
